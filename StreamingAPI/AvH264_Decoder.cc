@@ -101,11 +101,11 @@ int AvH264_Decoder::decode(uint8_t* pDataIn, int nInSize, cv::Mat& res)
 {
     packet.size = nInSize;
     packet.data = pDataIn;
-
+    int ret;
     if (packet.size > 0)
     {
         int got_picture = 0;
-        int ret = avcodec_send_packet(context, &packet);
+        ret = avcodec_send_packet(context, &packet);
         if (0 == ret)
         {
             got_picture = avcodec_receive_frame(context, frame);
@@ -118,7 +118,11 @@ int AvH264_Decoder::decode(uint8_t* pDataIn, int nInSize, cv::Mat& res)
 
         if (!got_picture)
         {
-            avframe2cvmat(frame, res);
+            ret = avframe2cvmat(frame, res);
+        }
+        else
+        {
+            return -1;
         }
     }
     else
@@ -126,7 +130,7 @@ int AvH264_Decoder::decode(uint8_t* pDataIn, int nInSize, cv::Mat& res)
         std::cerr << "No data to decode!\n";
         return -1;
     }
-    return 0;
+    return ret;
 }
 
 void AvH264_Decoder::close()

@@ -43,8 +43,12 @@ private:
     std::unique_ptr<IClient> client = nullptr;
 
     AvH264_Decoder decoder;
+    bool bDecoderInitDone;
     H264_Frame frame;
     FramePackage package;
+
+    std::thread updateWindowThread;
+    bool bThreadRunning;
 
     void initClient() noexcept(false);
 };

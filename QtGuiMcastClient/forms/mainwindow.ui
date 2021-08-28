@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Open Webcam</string>
+     <string>Start H264 stream</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_close_webcam">
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Close Webcam</string>
+     <string>Close H264 stream</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
