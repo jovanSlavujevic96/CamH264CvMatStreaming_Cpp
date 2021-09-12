@@ -48,3 +48,4 @@ find_package(Threads REQUIRED)
 link_libraries(Threads::Threads)
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/QtGuiMcastClient")
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/H264VideoStreaming")
